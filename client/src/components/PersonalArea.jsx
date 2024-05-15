@@ -26,7 +26,7 @@ export default function PersonalArea() {
    
     return (
         <>
-            <td onClick={() => onMouseClickShowTrainingClient("203669558 ")}> {}</td>
+            <button onClick={() => onMouseClickShowTrainingClient("203669558")}> {}</button>
         </>
     )
 
