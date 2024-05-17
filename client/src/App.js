@@ -9,9 +9,9 @@ function App() {
     
    
       
-      <HomeTraining/>
+      // <HomeTraining/>
       // <ContactUs></ContactUs>,
-      // <PersonalArea></PersonalArea>
+      <PersonalArea></PersonalArea>
      
   
   
