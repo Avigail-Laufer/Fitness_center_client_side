@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
-import { useNavigate } from "react-router-dom";
-// const navigate = useNavigate(); // from inside the function component
+import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
+ // from inside the function component
+
 const Login = (props) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [emailError, setEmailError] = useState('')
   const [passwordError, setPasswordError] = useState('')
+  const navigate = useNavigate(); 
 
   // const navigate = useNavigate()
 
@@ -31,7 +33,7 @@ const Login = (props) => {
       </div>
       <br />
       <div className={'inputContainer'}>
-        <input className={'inputButton'} type="button" onClick={onButtonClick} value={'Log in'} />
+        <input className={'inputButton'} type="button" onClick={()=>navigate(`/PersonalArea/${password}`)} value={'Log in'} />
       </div>
       {/* <div className="blogImageSection"
         onClick={() =>

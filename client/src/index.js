@@ -7,6 +7,7 @@ import HomeTraining from './components/homeTraining';
 import Login from './components/Login';
 import ContactUs from './components/ContactUs';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import PersonalArea from './components/PersonalArea';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -19,10 +20,11 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
- <BrowserRouter>
-  <Routes>
-      <Route path="/" element={<HomeTraining />}></Route>
-      <Route path="/Login" element={<Login />}></Route>
-      <Route path="/ContactUs" element={<ContactUs />}></Route>
-   </Routes>
-</BrowserRouter> 
+//  <BrowserRouter>
+//   <Routes>
+//       <Route path="/" element={<HomeTraining />}></Route>
+//       <Route path="/Login" element={<Login />}></Route>
+//       <Route path="/ContactUs" element={<ContactUs />}></Route>
+//       <Route path="/PersonalArea/:username" element={<PersonalArea />}></Route>
+//    </Routes>
+// </BrowserRouter> 

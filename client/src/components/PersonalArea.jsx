@@ -1,13 +1,16 @@
 import React, { createElement, useEffect, useState } from "react"
+import { useParams } from "react-router-dom";
 
 export default function PersonalArea(props) {
     const [apiRequest, setapiRequest] = useState([]);
     const [apiRequestDate, setapiRequestDate] = useState([]);
     const [training, setTraining] = useState(" ")
+    const {username}=useParams();
     
-        const onMouseClickShowTrainingClient= async (id) => {
+        const onMouseClickShowTrainingClient= async () => {
+            debugger
             try {
-                const url = "http://localhost:5168/api/training/"+id;
+                const url = "http://localhost:5168/api/training/"+username;
                 // Get users list in API request
                 const response = await fetch(url);
 
@@ -52,7 +55,7 @@ export default function PersonalArea(props) {
    
     return (
         <>
-        <button  onClick={() => onMouseClickShowTrainingClient("214660664")}>get your training</button>
+        <button  onClick={() => onMouseClickShowTrainingClient()}>get your training</button>
         
        
          { apiRequest ? apiRequest.map((item) => (
