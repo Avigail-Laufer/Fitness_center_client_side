@@ -68,7 +68,7 @@ export default function ContactUs() {
                 <input type="text" name=" BirthDate" value={formData.BirthDate} onChange={handleChange} />
             </label>
             <br />
-            <button type="submit">Add Post</button>
+            <button type="submit"  class="btn btn-outline-primary">Add Post</button>
         </form>
 
 

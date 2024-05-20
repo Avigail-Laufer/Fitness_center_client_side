@@ -5,12 +5,12 @@ export default function PersonalArea(props) {
     const [apiRequest, setapiRequest] = useState([]);
     const [apiRequestDate, setapiRequestDate] = useState([]);
     const [training, setTraining] = useState(" ")
-    const {username}=useParams();
+    const {id}=useParams();
     
         const onMouseClickShowTrainingClient= async () => {
             debugger
             try {
-                const url = "http://localhost:5168/api/training/"+username;
+                const url = "http://localhost:5168/api/training/"+id;
                 // Get users list in API request
                 const response = await fetch(url);
 
@@ -29,7 +29,7 @@ export default function PersonalArea(props) {
         };
 
 
-        const onMouseClickShowDayClient = async (id) => { 
+        const onMouseClickShowDayClient = async () => { 
             try {
                 
                 const url = "http://localhost:5168/api/Schedule?id="+id+"&&training="+training;
@@ -75,7 +75,7 @@ export default function PersonalArea(props) {
            <br />
            <input placeholder="enter training for get it date" onChange={(e) => setTraining(e.target.value)}></input>
            <br />
-           <button  onClick={() => onMouseClickShowDayClient ("214660664")}>get your date training</button>
+           <button  onClick={() => onMouseClickShowDayClient ()}>get your date training</button>
           
             { apiRequestDate? apiRequestDate.map((item) => (
                

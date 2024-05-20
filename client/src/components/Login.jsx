@@ -3,18 +3,44 @@ import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
  // from inside the function component
 
 const Login = (props) => {
-  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [emailError, setEmailError] = useState('')
   const [passwordError, setPasswordError] = useState('')
   const navigate = useNavigate(); 
 
-  // const navigate = useNavigate()
 
 
-  const onButtonClick = () => {
-    console.log(password);
-  }
+
+  
+    const onMouseClick= async () => {
+     
+      try {
+        debugger
+          const url = "http://localhost:5168/api/client/id/"+password;
+         
+          const response = await fetch(url);
+          
+          if (response){
+          navigate(`/PersonalArea/${password}`)
+          }
+          else{
+            navigate(`/ContactUs/${password}`)
+          }
+          
+
+         
+          // console.log("data: " , json.items);
+      
+      
+
+
+          console.log("data: " , response);
+      } catch (error) {
+          console.log("error: ", error);
+      }
+  };
+
+    
+
 
   return (
     <div className={'mainContainer'}>
@@ -33,15 +59,11 @@ const Login = (props) => {
       </div>
       <br />
       <div className={'inputContainer'}>
-        <input className={'inputButton'} type="button" onClick={()=>navigate(`/PersonalArea/${password}`)} value={'Log in'} />
+        <input className={'inputButton'} type="button"  value={'Log in'} onClick={onMouseClick} />
       </div>
-      {/* <div className="blogImageSection"
-        onClick={() =>
-          navigate('PersonalArea', { password }) // this is how to pass data with useNavigate
-        }> ... </div> */}
+      
     </div>
 
   )
-}
-
+  }
 export default Login

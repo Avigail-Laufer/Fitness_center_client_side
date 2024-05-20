@@ -12,7 +12,7 @@ export default function HomeTraining() {
     const onMouseOverCaptureHandler = (item) => {
         setHover(item.purposeOfTraining);
     };
-   
+
     useEffect( () => {
         const fetchData = async () => {
             const url = "http://localhost:5168/api/training"
