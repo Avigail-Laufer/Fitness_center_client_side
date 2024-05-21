@@ -36,6 +36,7 @@ function App() {
           <Route path="/ContactUs/:id "element={<ContactUs />}></Route>
           <Route path="/homeTraining" element={<HomeTraining />}></Route>
           <Route path="/AddTraining" element={<AddTraining />}></Route>
+          <Route path="/AddTraining" element={<AddTraining />}></Route>
         </Routes>
       </>
     </BrowserRouter>
