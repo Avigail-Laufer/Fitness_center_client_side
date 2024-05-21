@@ -22,9 +22,9 @@ const Login = (props) => {
           if (response){
           navigate(`/PersonalArea/${password}`)
           }
-          else{
-            navigate(`/ContactUs/${password}`)
-          }
+          // else{
+          //   navigate(`/ContactUs/${password}`)
+          // }
           
 
          

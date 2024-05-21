@@ -50,7 +50,27 @@ export default function PersonalArea(props) {
             }
         }
 
+const show=async()=>{
 
+    try {
+                
+        const url = "http://localhost:5168/api/Schedule?id="+id+"&&training="+training;
+        // Get users list in API request
+        const response = await fetch(url);
+
+        // Convert the response to json
+        const responseJson = await response.json();
+        // console.log("data: " , json.items);
+    
+    
+
+        // Save the data
+        setapiRequestDate(responseJson)
+        console.log("data: " , apiRequestDate);
+    } catch (error) {
+        console.log("error: ", error);
+    }
+}
     
    
     return (
@@ -64,7 +84,7 @@ export default function PersonalArea(props) {
                    <tbody>
                        <tr>
 
-                           <td> {item.name}</td>
+                           <td > {item.name}</td>
                           
                            
                        </tr>
