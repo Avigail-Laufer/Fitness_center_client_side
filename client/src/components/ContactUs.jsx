@@ -19,18 +19,27 @@ export default function ContactUs() {
     };
 
     // Function to submit the form data using Axios
-    const handleSubmit = async (e) => {
-
-        e.preventDefault();
-        await axios.post("http://localhost:5168/api/client", formData)
+    const handleSubmit =(e) => {
         
-            .then(response =>{ 
+            // Converting the formData object to a query string for navigation
+            const queryString = Object.keys(formData)
+                .map((key) => key + ':' + formData[key])
+                .join(',');
+        
+            navigate(`/TypeMember/${queryString}`); // Navigating to '/TypeMember' with query string
+        
+        
+        // navigate(`/TypeMember/${formData}`);    
+        // e.preventDefault();
+        // await axios.post("http://localhost:5168/api/client", formData)
+        
+        //     .then(response =>{ 
                
-                 navigate(`/Login`)
-                 console.log("Post created:", response.data)
-            }          
-                 )
-            .catch(error => console.log(error))
+        //          navigate(`/Login`)
+        //          console.log("Post created:", response.data)
+        //     }          
+        //          )
+        //     .catch(error => console.log(error))
 
     };
 
@@ -50,12 +59,7 @@ export default function ContactUs() {
                 <input type="number" name="id" value={formData.id} onChange={handleChange} />
             </label>
             <br />
-            <label>
-                IdTypeMember:
-                <input type="number" name="IdTypeMember" value={formData.IdTypeMember} onChange={handleChange}></input>
-            </label>
-            <br />
-            <br />
+        
             <label>
                 FirstName:
                 <input type="text" name="firstName" value={formData.firstName} onChange={handleChange}></input>

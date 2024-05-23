@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import HomeTraining from './components/homeTraining';
+
 import PersonalArea from './components/PersonalArea';
 import ContactUs from './components/ContactUs';
 import Login from './components/Login';
@@ -8,6 +8,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Home from './components/Home';
 import AddTraining from './components/AddTraining';
+import HomeTraining from './components/homeTraining';
+import TypeMember from './components/TypeMember';
 
 
 function App() {
@@ -37,6 +39,7 @@ function App() {
           <Route path="/homeTraining" element={<HomeTraining />}></Route>
           <Route path="/AddTraining" element={<AddTraining />}></Route>
           <Route path="/AddTraining" element={<AddTraining />}></Route>
+          <Route path="/TypeMember/:clientsDetails" element={<TypeMember />}></Route>
         </Routes>
       </>
     </BrowserRouter>
