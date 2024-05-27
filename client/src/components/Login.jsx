@@ -11,12 +11,12 @@ const Login = (props) => {
       const url = `http://localhost:5168/api/client/id/${password}`;
       const response = await fetch(url);
 
-      if (response.ok) {
+      if (response.status === 200) {
         navigate(`/PersonalArea/${password}`);
       } else {
         // Handle error or navigate to a different page
         // navigate(`/ContactUs/${password}`);
-        console.log('Error occurred');
+        navigate(`/ContactUs`);
       }
 
       console.log("Response data:", response);

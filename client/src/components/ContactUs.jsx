@@ -22,11 +22,9 @@ export default function ContactUs() {
     const handleSubmit =(e) => {
         
             // Converting the formData object to a query string for navigation
-            const queryString = Object.keys(formData)
-                .map((key) => key + ':' + formData[key])
-                .join(',');
+            
         
-            navigate(`/TypeMember/${queryString}`); // Navigating to '/TypeMember' with query string
+            navigate(`/TypeMember/${formData.id}/${formData.firstName}/${formData.lastName}/${formData.email}/${formData.fhone}`); // Navigating to '/TypeMember' with query string
         
         
         // navigate(`/TypeMember/${formData}`);    
@@ -56,23 +54,23 @@ export default function ContactUs() {
         <form onSubmit={handleSubmit}>
             <label>
                 ID:
-                <input type="number" name="id" value={formData.id} onChange={handleChange} />
+                <input maxLength={9}   type="number" name="id" value={formData.id} onChange={handleChange} />
             </label>
             <br />
         
             <label>
                 FirstName:
-                <input type="text" name="firstName" value={formData.firstName} onChange={handleChange}></input>
+                <input required="true" type="text" name="firstName" value={formData.firstName} onChange={handleChange}></input>
             </label>
             <br />
             <label>
                 LastName:
-                <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} />
+                <input required="true" type="text" name="lastName" value={formData.lastName} onChange={handleChange} />
             </label>
             <br />
             <label>
                 Phone:
-                <input type="number" name="fhone" value={formData.fhone} onChange={handleChange} />
+                <input required="true" type="number" name="fhone" value={formData.fhone} onChange={handleChange} />
             </label>
             <br />
             <label>

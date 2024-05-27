@@ -39,7 +39,7 @@ function App() {
           <Route path="/homeTraining" element={<HomeTraining />}></Route>
           <Route path="/AddTraining" element={<AddTraining />}></Route>
           <Route path="/AddTraining" element={<AddTraining />}></Route>
-          <Route path="/TypeMember/:clientsDetails" element={<TypeMember />}></Route>
+          <Route path="/TypeMember/:id/:firstName/:lastName/:email/:fhone" element={<TypeMember />}></Route>
         </Routes>
       </>
     </BrowserRouter>
