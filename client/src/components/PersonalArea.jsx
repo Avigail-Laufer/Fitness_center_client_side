@@ -9,6 +9,7 @@ function PersonalArea(props) {
     const [TrainingFlag, setTrainingFlag] = useState(false);
     const [TrainingClientFlag, setTrainingClientFlag] = useState(false);
     const [ShowTrainingDayFlag, setShowTrainingDayFlag] = useState(false);
+    const [removeFlag, setRemoveFlag] = useState(false);
     const [apiRequest, setapiRequest] = useState([]);
     const [apiRequestEror, setapiRequestEror] = useState();
     const [apiRequestDate, setapiRequestDate] = useState([]);
@@ -30,6 +31,9 @@ function PersonalArea(props) {
         setResponse(props.response)
         setTrainingFlag(!TrainingFlag)
     };
+    const setRemove=()=>{
+        setRemoveFlag(!removeFlag)
+    }
 
 
     const onMouseClickShowTrainingClient = async () => {
@@ -127,6 +131,7 @@ function PersonalArea(props) {
             <br />
 
 
+
             {apiRequestDate ? apiRequestDate.map((item) => (
 
                 <table className='table table-dark'>
@@ -145,6 +150,9 @@ function PersonalArea(props) {
                         )} </tbody>
                 </table>
             )) : <h1>no data received</h1>}
+
+
+
             <button onClick={showAddTraining}>add training </button>
             {response ? response.map((item, index) => (
                 <table >
@@ -156,6 +164,8 @@ function PersonalArea(props) {
                     </tbody>
                 </table>
             )) : <h1>no data received</h1>}
+
+
             {apiRequestAllDateTraining ? apiRequestAllDateTraining.map((item) => (
 
                 <table className='table table-dark'>
@@ -172,8 +182,25 @@ function PersonalArea(props) {
                 </table>
 
             )) : <h1>no data received</h1>}
+
+
             {TrainingFlag && (
-                <button onClick={AddTraining}    >Add</button>)}
+                <button onClick={AddTraining}>Add</button>)}
+            <br />
+
+            <button onClick={setRemove} >remove training</button>
+            {apiRequest ? apiRequest.map((item) => (
+
+                <table className='table table-dark'>
+                    <tbody>
+                    {removeFlag && (
+                        <tr>
+                           <td > {item.name}</td>
+                        </tr>
+                    )}</tbody>
+                </table>
+
+            )) : <h1>no data received</h1>}
 
         </>
     )

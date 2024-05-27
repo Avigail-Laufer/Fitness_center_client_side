@@ -27,21 +27,7 @@ return function BasicTraining() {
     }, [])
     return <OriginComponent response = {response}></OriginComponent>
        
-            {/* {response ? response.map((item, index) => (
-               
-                <table className='table table-dark'>
-                    <tbody>
-                        <tr>
-
-                            <td onMouseOver={() => onMouseOverCaptureHandler(item)}> {item.name}</td>
-                           
-                            
-                        </tr>
-                    </tbody>
-                </table>
-                
-            )) : <h1>no data received</h1>}
-             <h1 id="purposeOfTraining">{hover}</h1> */}
+          
 }
     
 
