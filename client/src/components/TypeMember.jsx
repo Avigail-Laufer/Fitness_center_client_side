@@ -14,7 +14,7 @@ export default function TypeMember(props) {
     const [TypeMember, setIdTypeMember] = useState(null);
     const [formData, setFormData] = useState({
         id: id,
-        IdTypeMember:1,
+        IdTypeMember: 1,
         firstName: firstName,
         lastName: lastName,
         email: email,
@@ -22,10 +22,12 @@ export default function TypeMember(props) {
     });
     const navigate = useNavigate();
 
-    const handleSubmit = async (e) => {
-       
-        e.preventDefault();
-       
+    const handleSubmit = async (aa) => {
+
+        // event.preventDefault();
+
+        console.log(aa);
+
         await axios.post("http://localhost:5168/api/client", formData)
 
             .then(response => {
@@ -42,7 +44,10 @@ export default function TypeMember(props) {
     return (<>
         <h1>choose your Training package</h1>
 
-        <button onClick={handleSubmit} name="IdTypeMember" >freeDom</button>
+        <button onClick = {(e) => {
+            e.preventDefault()
+            handleSubmit(11)
+        }} name="IdTypeMember" >freeDom</button>
         {/* <button onChange={() => setNumOfChoose(2)}>Trial lesson</button>
     <button onChange={() => setNumOfChoose(3)}>VIP</button>
     <button onChange={() => setNumOfChoose(4)}>primum</button> */}

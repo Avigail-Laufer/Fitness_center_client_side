@@ -93,6 +93,7 @@ function PersonalArea(props) {
 
     const AddTraining = async (e) => {
         debugger
+        console.log(codeDate);
         e.preventDefault();
 
         await axios.post("http://localhost:5168/api/appointment", formData)
@@ -172,7 +173,10 @@ function PersonalArea(props) {
                     <tbody>
                         <tr>
 
-                            <td id="codeDate" value={item.id}  >day: {item.day}</td>
+                            <td id={item.id} 
+                            onClick={(e)=>{
+                                e.preventDefault()
+                                setcodeDate(e.target.id)}} >day: {item.day}</td>
                             <td>hour: {item.time}</td>
 
 
