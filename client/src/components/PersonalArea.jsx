@@ -5,7 +5,7 @@ import axios from "axios";
 
 function PersonalArea(props) {
 
-    const [codeDate, setcodeDate] = useState();
+    const [codeDate, setcodeDate] = useState(0);
     const [TrainingFlag, setTrainingFlag] = useState(false);
     const [TrainingClientFlag, setTrainingClientFlag] = useState(false);
     const [ShowTrainingDayFlag, setShowTrainingDayFlag] = useState(false);
@@ -16,11 +16,7 @@ function PersonalArea(props) {
     const [apiRequestAllDateTraining, setapiRequestAllDateTraining] = useState([]);
     const { id } = useParams();
     const [response, setResponse] = useState(null)
-    const [formData, setFormData] = useState({
-
-        idClient: id,
-        codeDate: 500
-    });
+  
 
     // useEffect(() => {
     //     setResponse(props.response)
@@ -94,9 +90,14 @@ function PersonalArea(props) {
     const AddTraining = async (e) => {
         debugger
         console.log(codeDate);
+        const updatedFormData = {
+            idClient: id,
+            codeDate: codeDate
+        };
+    
         e.preventDefault();
 
-        await axios.post("http://localhost:5168/api/appointment", formData)
+        await axios.post("http://localhost:5168/api/appointment", updatedFormData)
 
             .then(response => {
 

@@ -14,7 +14,7 @@ export default function TypeMember(props) {
     const [TypeMember, setIdTypeMember] = useState(null);
     const [formData, setFormData] = useState({
         id: id,
-        IdTypeMember: 1,
+        IdTypeMember: TypeMember,
         firstName: firstName,
         lastName: lastName,
         email: email,
@@ -27,6 +27,7 @@ export default function TypeMember(props) {
         // event.preventDefault();
 
         console.log(aa);
+        debugger
 
         await axios.post("http://localhost:5168/api/client", formData)
 
