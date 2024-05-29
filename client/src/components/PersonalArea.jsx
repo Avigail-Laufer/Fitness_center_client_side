@@ -1,9 +1,13 @@
 import React, { createElement, useEffect, useState } from "react"
-import { useParams } from "react-router-dom";
-import HomeTrainingComponent from "./BasicTraining";
+import { useNavigate, useParams } from "react-router-dom";
+import BasicTraining from "./BasicTraining";
 import axios from "axios";
+import DeleteTraining from "./DeleteTraining";
+
 
 function PersonalArea(props) {
+    const navigate = useNavigate();
+   
 
     const [codeDate, setcodeDate] = useState(0);
     const [TrainingFlag, setTrainingFlag] = useState(false);
@@ -206,10 +210,12 @@ function PersonalArea(props) {
                 </table>
 
             )) : <h1>no data received</h1>}
+           
+            <button onClick={()=>{ navigate(`/DeleteTraining/${props}`)}}>Remove your training</button>
 
         </>
     )
 
 
 }
-export default HomeTrainingComponent(PersonalArea);
+export default BasicTraining(PersonalArea);

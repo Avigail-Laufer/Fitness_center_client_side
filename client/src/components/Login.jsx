@@ -12,6 +12,7 @@ const Login = (props) => {
       const response = await fetch(url);
 
       if (response.status === 200) {
+        console.log(password);
         navigate(`/PersonalArea/${password}`);
       } else {
         // Handle error or navigate to a different page

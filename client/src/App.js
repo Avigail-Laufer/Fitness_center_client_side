@@ -10,6 +10,7 @@ import Home from './components/Home';
 import AddTraining from './components/AddTraining';
 import HomeTraining from './components/homeTraining';
 import TypeMember from './components/TypeMember';
+import DeleteTraining from './components/DeleteTraining';
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
           <Route path="/Login" element={<Login />}></Route>
           <Route path="/ContactUs" element={<ContactUs />}></Route>
           <Route path="/PersonalArea/:id" element={<PersonalArea />}></Route>
+          <Route path="/DeleteTraining/:id" element={<DeleteTraining />}></Route>
           <Route path="/ContactUs/:id "element={<ContactUs />}></Route>
           <Route path="/homeTraining" element={<HomeTraining />}></Route>
           <Route path="/AddTraining" element={<AddTraining />}></Route>

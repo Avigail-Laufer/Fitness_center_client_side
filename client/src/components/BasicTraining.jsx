@@ -3,8 +3,6 @@ import React, { createElement, useEffect, useState } from "react"
 const BasicTrainingComponent = (OriginComponent) => {
 
 return function BasicTraining() {
-    
-
     const [isTrue, setIstrue] = useState(false)
     const [response, setResponse] = useState(null)
     const [hover, setHover] = useState(false);
