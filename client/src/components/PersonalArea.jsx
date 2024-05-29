@@ -211,7 +211,7 @@ function PersonalArea(props) {
 
             )) : <h1>no data received</h1>}
            
-            <button onClick={()=>{ navigate(`/DeleteTraining/${props}`)}}>Remove your training</button>
+            <button onClick={()=>{ navigate(`/DeleteTraining/${id}`)}}>Remove your training</button>
 
         </>
     )

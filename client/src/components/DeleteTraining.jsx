@@ -1,45 +1,62 @@
+import axios from "axios";
 import React, { createElement, useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom";
-import BasicTraining from "./BasicTraining";
-import axios from "axios";
 
-
- function DeleteTraining(props) {
-    const [isTrue, setIstrue] = useState(false)
-    const [response, setResponse] = useState(null)
-    const [hover, setHover] = useState(false);
-   
-
-    useEffect(() => {
-        setResponse(props.response)
-    })
-
-    const onMouseOverCaptureHandler = (item) => {
-        setHover(item.purposeOfTraining);
-    };
-
+function DeleteTraining() {
+    const deleteItem = async (item) => {
+        try {
+            await axios.delete(`http://localhost:5168/api/training/${item.id}`);
+            console.log("Item deleted successfully");
+        } catch (error) {
+            console.error("Error deleting item: ", error);
+            
+        }
+    }
     
+
+    const [apiRequest, setapiRequest] = useState([]);
+    const { id } = useParams();
+    useEffect(() => {
+        const ShowTrainingClient = async () => {
+            try {
+                const url = "http://localhost:5168/api/training/" + id;
+                const response = await fetch(url);
+                const responseJson = await response.json();
+                if (response.status === 200) {
+                    setapiRequest(responseJson)
+                }
+                else {
+                    setapiRequest("you dont have training")
+                }
+                console.log("data: ", apiRequest);
+            } catch (error) {
+                debugger
+                console.log("error: ", error);
+            }
+        };
+        ShowTrainingClient()
+    }, [])
+
+
+
     return (
         <>
-            {response ? response.map((item, index) => (
-               
+            {apiRequest ? apiRequest.map((item) => (
+
                 <table className='table table-dark'>
                     <tbody>
                         <tr>
 
-                            <td onMouseOver={() => onMouseOverCaptureHandler(item)}> {item.name}</td>
-                           
-                            
+                            <td onClick={deleteItem(item)}> {item.name}</td>
+
+
+
                         </tr>
                     </tbody>
                 </table>
-                
+
             )) : <h1>no data received</h1>}
-             <h1 id="purposeOfTraining">{hover}</h1>
         </>
     )
-
-  
-
- }
- export default BasicTraining(DeleteTraining);
+}
+export default DeleteTraining;
