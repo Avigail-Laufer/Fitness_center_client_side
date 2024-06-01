@@ -3,19 +3,26 @@ import React, { createElement, useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom";
 
 function DeleteTraining() {
-    const deleteItem = async (item) => {
-        try {
-            await axios.delete(`http://localhost:5168/api/training/${item.id}`);
-            console.log("Item deleted successfully");
-        } catch (error) {
-            console.error("Error deleting item: ", error);
+    const { id } = useParams();
+    // const { codeDate } = useParams();
+    // const deltedFormData = {
+    //     idClient: id,
+    //     codeDate: codeDate
+    // };
+    // const deleteItem = async (item) => {
+    //     try {
+    //         codeDate= item.codeDate;
+    //         await axios.delete("http://localhost:5168/api/training/"+deltedFormData);
+    //         console.log("Item deleted successfully");
+    //     } catch (error) {
+    //         console.error("Error deleting item: ", error);
             
-        }
-    }
+    //     }
+    // }
     
 
     const [apiRequest, setapiRequest] = useState([]);
-    const { id } = useParams();
+
     useEffect(() => {
         const ShowTrainingClient = async () => {
             try {
@@ -47,7 +54,7 @@ function DeleteTraining() {
                     <tbody>
                         <tr>
 
-                            <td onClick={deleteItem(item)}> {item.name}</td>
+                            <td > {item.name}</td>
 
 
 

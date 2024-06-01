@@ -197,7 +197,6 @@ function PersonalArea(props) {
                 <button onClick={AddTraining}>Add</button>)}
             <br />
 
-            <button onClick={setRemove} >remove training</button>
             {apiRequest ? apiRequest.map((item) => (
 
                 <table className='table table-dark'>
