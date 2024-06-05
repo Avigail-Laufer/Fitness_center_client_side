@@ -7,8 +7,8 @@ import DeleteTraining from "./DeleteTraining";
 
 function PersonalArea(props) {
     const navigate = useNavigate();
-   
 
+    const [numTraining, setnumTraining] = useState(0);
     const [codeDate, setcodeDate] = useState(0);
     const [TrainingFlag, setTrainingFlag] = useState(false);
     const [TrainingClientFlag, setTrainingClientFlag] = useState(false);
@@ -20,7 +20,7 @@ function PersonalArea(props) {
     const [apiRequestAllDateTraining, setapiRequestAllDateTraining] = useState([]);
     const { id } = useParams();
     const [response, setResponse] = useState(null)
-  
+
 
     // useEffect(() => {
     //     setResponse(props.response)
@@ -31,7 +31,7 @@ function PersonalArea(props) {
         setResponse(props.response)
         setTrainingFlag(!TrainingFlag)
     };
-    const setRemove=()=>{
+    const setRemove = () => {
         setRemoveFlag(!removeFlag)
     }
 
@@ -91,26 +91,39 @@ function PersonalArea(props) {
         }
     }
 
-    const AddTraining = async (e) => {
-        debugger
-        console.log(codeDate);
+    const AddTRaining = async (e) => {
+
+        e.preventDefault();
         const updatedFormData = {
             idClient: id,
             codeDate: codeDate
         };
-    
-        e.preventDefault();
-
         await axios.post("http://localhost:5168/api/appointment", updatedFormData)
-
             .then(response => {
-
-
                 console.log("Post created:", response.data)
             }
             )
             .catch(error => console.log(error))
+    }
 
+    const TryAddTraining = async (e) => {
+        e.preventDefault();
+        await axios.get("http://localhost:5168/api/appointment?id=" + id)
+
+            // Convert the response to json
+            .then(responses => {
+
+                console.log(responses.data);
+                setnumTraining(response.data)
+                if (responses.data.num > 0) {
+                    AddTRaining(e);
+                }
+                else {
+                    console.log("you dont could add training")
+                }
+            }
+            )
+            .catch(error => console.log(error))
     };
 
 
@@ -178,10 +191,11 @@ function PersonalArea(props) {
                     <tbody>
                         <tr>
 
-                            <td id={item.id} 
-                            onClick={(e)=>{
-                                e.preventDefault()
-                                setcodeDate(e.target.id)}} >day: {item.day}</td>
+                            <td id={item.id}
+                                onClick={(e) => {
+                                    e.preventDefault()
+                                    setcodeDate(e.target.id)
+                                }} >day: {item.day}</td>
                             <td>hour: {item.time}</td>
 
 
@@ -194,23 +208,23 @@ function PersonalArea(props) {
 
 
             {TrainingFlag && (
-                <button onClick={AddTraining}>Add</button>)}
+                <button onClick={TryAddTraining}>Add</button>)}
             <br />
 
             {apiRequest ? apiRequest.map((item) => (
 
                 <table className='table table-dark'>
                     <tbody>
-                    {removeFlag && (
-                        <tr>
-                           <td > {item.name}</td>
-                        </tr>
-                    )}</tbody>
+                        {removeFlag && (
+                            <tr>
+                                <td > {item.name}</td>
+                            </tr>
+                        )}</tbody>
                 </table>
 
             )) : <h1>no data received</h1>}
-           
-            <button onClick={()=>{ navigate(`/DeleteTraining/${id}`)}}>Remove your training</button>
+
+            <button onClick={() => { navigate(`/DeleteTraining/${id}`) }}>Remove your training</button>
 
         </>
     )
