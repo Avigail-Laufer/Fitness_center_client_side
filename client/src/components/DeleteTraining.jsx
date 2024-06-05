@@ -3,22 +3,27 @@ import React, { createElement, useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom";
 
 function DeleteTraining() {
+    
     const { id } = useParams();
-    // const { codeDate } = useParams();
-    // const deltedFormData = {
-    //     idClient: id,
-    //     codeDate: codeDate
-    // };
-    // const deleteItem = async (item) => {
-    //     try {
-    //         codeDate= item.codeDate;
-    //         await axios.delete("http://localhost:5168/api/training/"+deltedFormData);
-    //         console.log("Item deleted successfully");
-    //     } catch (error) {
-    //         console.error("Error deleting item: ", error);
+   // const { codeDate } = useParams();
+    const deltedFormData = {
+        idClient: id,
+        //codeDate: codeDate
+    };
+    const deleteItem = async (item) => {
+        console.log('delete')  
+       // console.log(item.codeDate);
+        console.log(item.name);
+        console.log(id)
+         try {
+           // codeDate= item.codeDate;
+            await axios.delete("http://localhost:5168/api/appointment/",deltedFormData);
+            console.log("Item deleted successfully");
+        } catch (error) {
+            console.error("Error deleting item: ", error);
             
-    //     }
-    // }
+        }
+    }
     
 
     const [apiRequest, setapiRequest] = useState([]);
@@ -53,11 +58,7 @@ function DeleteTraining() {
                 <table className='table table-dark'>
                     <tbody>
                         <tr>
-
-                            <td > {item.name}</td>
-
-
-
+                        <td onClick={() => deleteItem(item)}> {item.name}</td>
                         </tr>
                     </tbody>
                 </table>
