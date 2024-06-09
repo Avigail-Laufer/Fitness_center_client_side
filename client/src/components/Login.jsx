@@ -1,18 +1,22 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import { UPDATE_CONTENT, useStateValue } from './Context';
 
 const Login = (props) => {
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const { state, dispatch } = useStateValue();
   const navigate = useNavigate();
 
   const onMouseClick = async () => {
     try {
       const url = `http://localhost:5168/api/client/id/${password}`;
       const response = await fetch(url);
-
+      debugger
       if (response.status === 200) {
+        debugger
         console.log(password);
+        dispatch({ type: UPDATE_CONTENT, payload: password });
         navigate(`/PersonalArea/${password}`);
       } else {
         // Handle error or navigate to a different page

@@ -6,7 +6,7 @@ import training from "./BasicTraining"
     
 
     const [isTrue, setIstrue] = useState(false)
-    const [response, setResponse] = useState(null)
+    const [response, setResponse] = useState([])
     const [hover, setHover] = useState(false);
    
 

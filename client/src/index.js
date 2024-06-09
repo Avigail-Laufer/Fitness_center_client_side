@@ -8,12 +8,15 @@ import Login from './components/Login';
 import ContactUs from './components/ContactUs';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import PersonalArea from './components/PersonalArea';
+import { StateProvider } from './components/Context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <StateProvider>
   <React.StrictMode>
     <App />
   </React.StrictMode>
+  </StateProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import BasicTraining from "./BasicTraining";
 import axios from "axios";
 import DeleteTraining from "./DeleteTraining";
+import { useStateValue } from './Context';
 
 
 function PersonalArea(props) {
@@ -19,7 +20,8 @@ function PersonalArea(props) {
     const [apiRequestDate, setapiRequestDate] = useState([]);
     const [apiRequestAllDateTraining, setapiRequestAllDateTraining] = useState([]);
     const { id } = useParams();
-    const [response, setResponse] = useState(null)
+    const [response, setResponse] = useState([])
+    const { state, dispatch } = useStateValue();
 
 
     // useEffect(() => {
@@ -39,7 +41,7 @@ function PersonalArea(props) {
     const onMouseClickShowTrainingClient = async () => {
         setTrainingClientFlag(!TrainingClientFlag)
         try {
-            const url = "http://localhost:5168/api/training/" + id;
+            const url = "http://localhost:5168/api/training/" + state.id;
             // Get users list in API request
             const response = await fetch(url);
 
@@ -108,7 +110,7 @@ function PersonalArea(props) {
 
     const TryAddTraining = async (e) => {
         e.preventDefault();
-        await axios.get("http://localhost:5168/api/appointment?id=" + id)
+        await axios.get("http://localhost:5168/api/appointment?id=" + state.id )
 
             // Convert the response to json
             .then(responses => {
@@ -171,8 +173,9 @@ function PersonalArea(props) {
             )) : <h1>no data received</h1>}
 
 
-
-            <button onClick={showAddTraining}>add training </button>
+            
+            <button onClick={() => showAddTraining()}>add training </button>
+            <br></br>
             {response ? response.map((item, index) => (
                 <table >
                     <tbody>
@@ -206,7 +209,7 @@ function PersonalArea(props) {
 
             )) : <h1>no data received</h1>}
 
-
+            <br></br>
             {TrainingFlag && (
                 <button onClick={TryAddTraining}>Add</button>)}
             <br />
@@ -225,6 +228,8 @@ function PersonalArea(props) {
             )) : <h1>no data received</h1>}
 
             <button onClick={() => { navigate(`/DeleteTraining/${id}`) }}>Remove your training</button>
+
+            <p>{state.firstName}</p>
 
         </>
     )
