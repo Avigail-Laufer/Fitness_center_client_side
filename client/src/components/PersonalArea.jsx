@@ -22,6 +22,7 @@ function PersonalArea(props) {
     const { id } = useParams();
     const [response, setResponse] = useState([])
     const { state, dispatch } = useStateValue();
+    const { canAdd, setcanAdd } = useStateValue();
 
 
     // useEffect(() => {
@@ -104,19 +105,29 @@ function PersonalArea(props) {
             )
             .catch(error => console.log(error))
     }
-
+   const chck2=async (e) => {
+    e.preventDefault();
+     await axios.get("http://localhost:5168/api/appointment/bool?codeDate="+codeDate+"&id="+state.id)
+         .then(
+             response => {
+                //setcanAdd(response.data)
+                 console.log("Post created:", response.data)
+                 if (response.data){AddTRaining(e)}
+                 else{alert("you have this appointment plese choose another appointment")}
+             }
+             )
+            .catch(error => console.log(error))
+                   
+        }
     const TryAddTraining = async (e) => {
         e.preventDefault();
         await axios.get("http://localhost:5168/api/appointment?id=" + state.id )
-
-            // Convert the response to json
-            .then(responses => {
-
-                console.log(responses.data);
+           .then(responses => {
+              console.log(responses.data);
                 setnumTraining(response.data)
                 if (responses.data.num > 0) {
-                    AddTRaining(e);
-                }
+                    chck2(e)
+                 }
                 else {
                     console.log("you dont could add training")
                 }
