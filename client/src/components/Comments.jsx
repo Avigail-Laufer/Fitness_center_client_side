@@ -1,17 +1,20 @@
-import { click } from "@testing-library/user-event/dist/click"
-import React, { createElement, useEffect, useState } from "react"
-import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
+
+import React, { createElement, useEffect, useState} from "react"
+import {useNavigate }from 'react-router-dom';
 import axios from "axios";
-import training from "./BasicTraining"
 import { useStateValue } from './Context';
+import CommentObserver from "./CommentObserver";
+
 
 
 function Comments(props) {
+    const navigate = useNavigate();
     const { state, dispatch } = useStateValue(); 
     const [response, setResponse] = useState(null)
     const [comment, setComment] = useState("");
+   
     const addComments={
-        Id:2,
+
         Comments:comment,
         IdClient:state.id,
        
@@ -29,16 +32,23 @@ function Comments(props) {
         fetchData()
     }, [])
     const  Submit = async (e) => {
-        debugger
-        await axios.post("http://localhost:5168/api/comments", addComments)
+        if(state.id.length == 0)
+            navigate(`/Login`);
+        else{
+            await axios.post("http://localhost:5168/api/comments", addComments)
 
             .then(response => {
 
                 console.log("Post created:", response.data)
+
             }
             )
             .catch(error => console.log(error))
 
+          
+        }
+       
+       
     }
 
 
@@ -60,7 +70,7 @@ function Comments(props) {
 
             )) : <h1>no data received</h1>}
             <h1>Add comment</h1>
-            <input type="textArea" onChange={(e) => setComment(e.target.value)}></input>
+            <textarea  onChange={(e) => setComment(e.target.value)}></textarea>
             <br></br>
             <br></br>
             <button  onClick={(e) => {
