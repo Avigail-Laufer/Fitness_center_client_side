@@ -33,9 +33,7 @@ function PersonalArea(props) {
         setResponse(props.response)
         setTrainingFlag(!TrainingFlag)
     };
-    const setRemove = () => {
-        setRemoveFlag(!removeFlag)
-    }
+    
 
 
     const onMouseClickShowTrainingClient = async () => {
@@ -78,8 +76,7 @@ function PersonalArea(props) {
             // Convert the response to json
             const responseJson = await response.json();
             // console.log("data: " , json.items);
-            debugger
-
+          
             if (num == 1) {
 
                 setapiRequestDate(responseJson)
