@@ -49,12 +49,13 @@ function PersonalArea(props) {
             // console.log("data: " , json.items);
 
 
-            if (response.status === 200) {
-                setapiRequest(responseJson)
-            }
-            else {
-                setapiRequest("you dont have training")
-            }
+           
+            setapiRequest(responseJson)
+            debugger
+           
+            if (responseJson.length === 0)
+                alert("you dont have training")
+            // Save the data
             // Save the data
 
             console.log("data: ", apiRequest);
