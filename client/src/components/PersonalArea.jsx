@@ -129,6 +129,7 @@ function PersonalArea(props) {
                     chck2(e)
                  }
                 else {
+                    alert("you dont could add training with your currect package ")
                     console.log("you dont could add training")
                 }
             }

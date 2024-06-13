@@ -12,6 +12,7 @@ import TypeMember from './components/TypeMember';
 import DeleteTraining from './components/DeleteTraining';
 import CheckSign from './components/CheckSign';
 import Comments from './components/Comments';
+import PhotoCollage from './components/Home';
 
 
 function App() {
