@@ -22,16 +22,12 @@ function App() {
 
     <BrowserRouter>
       <>
-        <nav class="navbar navbar-dark bg-dark" >
-          <Link to="/CheckSign">private area</Link>
-
-
-          <Link to="/HomeTraining">our trainings</Link>
-
-          <Link to="/ContactUs">sign in</Link>
-
-
-          <Link to="/Comments">Comments</Link>
+      <nav  className="navbar navbar-dark custom-navbar">
+          <Link class="nav-tab" to="/CheckSign">private area</Link>
+          <Link class="nav-tab" to="/HomeTraining">our trainings</Link>
+          <Link class="nav-tab" to="/ContactUs">sign in</Link>
+          <Link class="nav-tab" to="/Comments">Comments</Link>
+          <a class="nav-tab" href='#s1'>about us</a>
         </nav>
         <Routes>
           <Route path="/CheckSign" element={<CheckSign />}></Route>

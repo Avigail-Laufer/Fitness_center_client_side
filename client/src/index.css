@@ -56,7 +56,7 @@ code {
 
 input[type='button'] {
   border: none;
-  background: cornflowerblue;
+  background: rgb(95, 98, 104);
   color: white;
   padding: 12px 24px;
   margin: 8px;
@@ -64,3 +64,4 @@ input[type='button'] {
   border-radius: 8px;
   cursor: pointer;
 }
+
