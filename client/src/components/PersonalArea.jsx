@@ -104,6 +104,7 @@ function PersonalArea(props) {
             }
             )
             .catch(error => console.log(error))
+        
     }
    const chck2=async (e) => {
     e.preventDefault();
