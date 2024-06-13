@@ -55,20 +55,42 @@ function TypeMember(props) {
     };
 
     return (<>
+
         <h1>choose your Training package</h1>
+        <div style={{ display: 'flex', justifyContent: 'center' ,alignItems: 'center', flexDirection: 'column' }}>
         {response ? response.map((item, index) => (
             <table >
                 <tbody>
-                    <tr>{ (
+                    <tr>
+                        <div class="card text-center" style={{ border: '1px solid #3498db',  width: '500px', margin: '100px auto' }}>
+                            <div class="card-header">
+                            {item.type}
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">{item.monthlyPayment}€ </h5>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                <a href="#" class="btn btn-primary" onClick={(e) => {
+                                    e.preventDefault()
+                                    handleSubmit(item.id)
+                                }} >Sumbit</a>
+                            </div>
+                            <div class="card-footer text-body-secondary">
+                            {item.type}
+                            </div>
+                        </div>
+                    </tr>
+                    {/* <tr>{(
 
                         <button onClick={(e) => {
                             e.preventDefault()
                             handleSubmit(item.id)
                         }} name="IdTypeMember" >{item.type}</button>
-                    )} </tr>
+                    )} </tr> */}
                 </tbody>
             </table>
+
         )) : <h1>no data received</h1>}
+        </div>
 
         {/* <button onChange={() => setNumOfChoose(2)}>Trial lesson</button>
     <button onChange={() => setNumOfChoose(3)}>VIP</button>

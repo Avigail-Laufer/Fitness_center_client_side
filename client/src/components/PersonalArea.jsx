@@ -33,6 +33,8 @@ function PersonalArea(props) {
         setResponse(props.response)
         setTrainingFlag(!TrainingFlag)
     };
+
+
     const setRemove = () => {
         setRemoveFlag(!removeFlag)
     }
@@ -106,6 +108,7 @@ function PersonalArea(props) {
             }
             )
             .catch(error => console.log(error))
+        
     }
 
     const TryAddTraining = async (e) => {

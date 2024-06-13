@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";                      
+import{useForm} from "react-hook-form";
+import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import axios from "axios";
 export default function ContactUs() {
-    const navigate = useNavigate(); 
-
+    const navigate = useNavigate();
+   const {formState:{errors}} = useForm();
 
     // State to store the form data
     const [formData, setFormData] = useState({
@@ -19,20 +20,20 @@ export default function ContactUs() {
     };
 
     // Function to submit the form data using Axios
-    const handleSubmit =(e) => {
-        
-            // Converting the formData object to a query string for navigation
-            
-        
-            navigate(`/TypeMember/${formData.id}/${formData.firstName}/${formData.lastName}/${formData.email}/${formData.fhone}`); // Navigating to '/TypeMember' with query string
-        
-        
+    const handleSubmit = (e) => {
+
+        // Converting the formData object to a query string for navigation
+
+
+        navigate(`/TypeMember/${formData.id}/${formData.firstName}/${formData.lastName}/${formData.email}/${formData.fhone}`); // Navigating to '/TypeMember' with query string
+
+
         // navigate(`/TypeMember/${formData}`);    
         // e.preventDefault();
         // await axios.post("http://localhost:5168/api/client", formData)
-        
+
         //     .then(response =>{ 
-               
+
         //          navigate(`/Login`)
         //          console.log("Post created:", response.data)
         //     }          
@@ -50,42 +51,44 @@ export default function ContactUs() {
 
 
 
+        <div style={{ border: '2px solid #3498db', borderRadius: '10px', padding: '20px', width: '400px', margin: '50px auto' }}>
+            <form onSubmit={handleSubmit}>
+                <label>
+                    ID:
+                    <input maxLength={9} type="number" name="id" value={formData.id} onChange={handleChange}  required="name is re"/>
+                    {errors?.id &&errors.id.maxLength==9}
+                </label>
+                <br />
 
-        <form onSubmit={handleSubmit}>
-            <label>
-                ID:
-                <input maxLength={9}   type="number" name="id" value={formData.id} onChange={handleChange} />
-            </label>
-            <br />
-        
-            <label>
-                FirstName:
-                <input required="true" type="text" name="firstName" value={formData.firstName} onChange={handleChange}></input>
-            </label>
-            <br />
-            <label>
-                LastName:
-                <input required="true" type="text" name="lastName" value={formData.lastName} onChange={handleChange} />
-            </label>
-            <br />
-            <label>
-                Phone:
-                <input required="true" type="number" name="fhone" value={formData.fhone} onChange={handleChange} />
-            </label>
-            <br />
-            <label>
-                Email:
-                <input type="email" name="email" value={formData.email} onChange={handleChange} />
-            </label>
-            <br/>
-            {/* <br />
+                <label>
+                    FirstName:
+                    <input required="true" type="text" name="firstName" value={formData.firstName} onChange={handleChange}></input>
+                </label>
+                <br />
+                <label>
+                    LastName:
+                    <input required="true" type="text" name="lastName" value={formData.lastName} onChange={handleChange} />
+                </label>
+                <br />
+                <label>
+                    Phone:
+                    <input required="true" type="number" name="fhone" value={formData.fhone} onChange={handleChange} />
+                </label>
+                <br />
+                <label>
+                    Email:
+                    <input type="email" name="email" value={formData.email} onChange={handleChange} />
+                </label>
+                <br />
+                {/* <br />
             <label>
                 BirthDate:
                 <input type="text" name=" BirthDate" value={formData.BirthDate} onChange={handleChange} />
             </label>
             <br /> */}
-            <button type="submit" class="btn btn-outline-primary" >Add Post</button>
-        </form>
+                <button type="submit" class="btn btn-outline-primary" >Add Post</button>
+            </form>
+        </div>
 
 
 
