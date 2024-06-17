@@ -6,7 +6,16 @@ return function BasicTraining() {
     const [isTrue, setIstrue] = useState(false)
     const [response, setResponse] = useState(null)
     const [hover, setHover] = useState(false);
-
+    debugger
+    const [imageUrl, setImageUrl] = useState(null); 
+    function arrayBufferToBase64(buffer) {
+        let binary = '';
+        let bytes = new Uint8Array(buffer);
+        for (let i = 0; i < bytes.byteLength; i++) {
+            binary += String.fromCharCode(bytes[i]);
+        }
+        return window.btoa(binary);
+    }
     const onMouseOverCaptureHandler = (item) => {
         setHover(item.purposeOfTraining);
     };
@@ -17,7 +26,12 @@ return function BasicTraining() {
             const response = await fetch(url)
             const responseJson=await (response.json())
             setResponse(responseJson)
-        
+            debugger
+            const base64Image = arrayBufferToBase64(responseJson[0].imageBytes); // Assuming the binary image data is in the field 'imageData'
+            debugger
+            setImageUrl(`data:image/jpeg;base64,${base64Image}`); // Adjust the MIME type according to your image type
+            
+    
         
         }
 

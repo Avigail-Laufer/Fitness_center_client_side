@@ -6,9 +6,13 @@ import { useStateValue } from './Context';
 import CommentObserver from "./CommentObserver";
 import './Comments.css';
 
+import profhil from '../images/p.jpg';
+import sher from '../images/imagepink.png';
+
 
 
 function Comments(props) {
+
     const navigate = useNavigate();
     const { state, dispatch } = useStateValue();
     const [response, setResponse] = useState(null)
@@ -58,45 +62,54 @@ function Comments(props) {
     return (
 
         <>
+            <div className="content">
+                <div class="comment-container theme--light">
+                    <div class="comments" >
+                        <div class="card v-card v-sheet theme--light elevation-2" >
+                            <span class="headline" >Add comment</span>
+                            <div class="form-floating">
+                                {/* <label for="floatingTextarea2">Comments</label> */}
+                                <br></br>
+                                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" onChange={(e) => setComment(e.target.value)}></textarea>
+                                <br></br>
+                                <br></br>
+                                <button class="btn btn-3" onClick={(e) => {
+                                    e.preventDefault()
+                                    Submit()
+                                }} > Submit</button>
+
+                            </div>
+                        </div>
+                    </div  >
+                </div>
+            </div>
 
 
 
             {response ? response.map((item) => (
-                <div class="card" >
-                    <div class="card-body">
-                        <h5 class="card-title">" {item.clientName}</h5>
-                        {/* <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6> */}
-                        <p class="card-text">{item.comments} "</p>
-                        {/* <a href="#" class="card-link">Card link</a>
-                     <a href="#" class="card-link">Another link</a> */}
+                    <div class="comment-container theme--light">
+                        <div class="comments" >
+                            <div class="card v-card v-sheet theme--light elevation-2" >
+                                <div class="v-avatar avatar" ><img src={profhil} /></div>
+                                <span class="headline" >{item.clientName}</span>
+                                <div class="sign-in-wrapper" >
+                                    <p class="caption disclaimer" >{item.comments}</p>
+                                    <p class="error-message" ></p>
+                                </div>
+
+                            </div>
+                        </div  >
                     </div>
-                </div>
+                )) : <h1>no data received</h1>
+            }
 
-                // <table className='table table-dark'>
-                //     <tbody>
-                //         {(
-                //             <tr>
-                //                 <td > </td>
-                //                 <td > {item.comments}</td>
-                //             </tr>
-                //         )}</tbody>
-                // </table>
 
-            )) : <h1>no data received</h1>}
-            <h1>Add comment</h1>
-            <div class="form-floating">
-                {/* <label for="floatingTextarea2">Comments</label> */}
-                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" onChange={(e) => setComment(e.target.value)}></textarea>
-            </div>
-            <br></br>
-            <br></br>
-            <button onClick={(e) => {
-                e.preventDefault()
-                Submit()
-            }} > Submit</button>
+
+
         </>
     )
 
 
 }
+
 export default Comments;
