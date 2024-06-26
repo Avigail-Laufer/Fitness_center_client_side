@@ -13,6 +13,7 @@ import DeleteTraining from './components/DeleteTraining';
 import CheckSign from './components/CheckSign';
 import Comments from './components/Comments';
 import PhotoCollage from './components/Home';
+import CreditCardForm from './components/CreditCardForm';
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
           <a class="nav-tab" href='#s1'>about us</a>
         </nav>
         <Routes>
+          <Route path="/CreditCardForm" element={<CreditCardForm/>}></Route>
           <Route path="/CheckSign" element={<CheckSign />}></Route>
           <Route path="/" element={<Home />}></Route>
           <Route path="/Login" element={<Login />}></Route>

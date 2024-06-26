@@ -1,0 +1,87 @@
+.contact-form-container {
+    max-width: 500px;
+    width: 100%;
+    margin-top: 100px;
+    /* מרחק מהחלק העליון של העמוד */
+    padding: 20px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+
+    border-radius: 40px;
+    padding: 30px;
+
+    background-color: #575c9448;
+    box-shadow: 0 4px 60 rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(4px);
+    position: absolute;
+    left: 750px;
+}
+
+.contact-form-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-family: 'Pacifico', cursive;
+    font-size: 2em;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+    display: block;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-control:focus {
+    border-color: #764ba2;
+    box-shadow: 0 0 10px rgba(118, 75, 162, 0.2);
+}
+
+.form-control.is-invalid {
+    border-color: #e74c3c;
+}
+
+.error-message {
+    color: #e74c3c;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.submit-button {
+    padding: 15px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #667eea;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 10px;
+}
+
+.submit-button:hover {
+    background-color: #764ba2;
+    transform: translateY(-2px);
+}
