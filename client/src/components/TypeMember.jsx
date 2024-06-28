@@ -33,25 +33,9 @@ function TypeMember(props) {
 
         console.log(TypeMember);
         debugger
-        const formData = {
-            id: id,
-            IdTypeMember: TypeMember,
-            firstName: firstName,
-            lastName: lastName,
-            email: email,
-            fhone: fhone,
-        };
 
-        await axios.post("http://localhost:5168/api/client", formData)
 
-            .then(response => {
-
-                navigate(`/Login`)
-                console.log("Post created:", response.data)
-            }
-            )
-            .catch(error => console.log(error))
-
+        navigate(`/${id}/${firstName}/${lastName}/${email}/${fhone}/${TypeMember}`);
     };
 
     return (<>
@@ -68,11 +52,11 @@ function TypeMember(props) {
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title">{item.monthlyPayment}€ </h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                <p class="card-text">{item.description}</p>
                                 <a href="#" class="btn btn-primary" onClick={(e) => {
                                     e.preventDefault()
                                     handleSubmit(item.id)
-                                }} >Sumbit</a>
+                                }} >for payment</a>
                             </div>
                             <div class="card-footer text-body-secondary">
                             {item.type}

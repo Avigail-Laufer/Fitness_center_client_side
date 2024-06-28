@@ -14,6 +14,8 @@ import CheckSign from './components/CheckSign';
 import Comments from './components/Comments';
 import PhotoCollage from './components/Home';
 import CreditCardForm from './components/CreditCardForm';
+import SuccessPage from './components/SuccessPage ';
+import GymRulesPage from './components/GymRulesPage';
 
 
 function App() {
@@ -26,12 +28,13 @@ function App() {
       <nav  className="navbar navbar-dark custom-navbar">
           <Link class="nav-tab" to="/CheckSign">private area</Link>
           <Link class="nav-tab" to="/HomeTraining">our trainings</Link>
-          <Link class="nav-tab" to="/ContactUs">sign in</Link>
+          <Link class="nav-tab" to="/GymRulesPage">sign in</Link>
           <Link class="nav-tab" to="/Comments">Comments</Link>
           <a class="nav-tab" href='#s1'>about us</a>
         </nav>
         <Routes>
           <Route path="/CreditCardForm" element={<CreditCardForm/>}></Route>
+          <Route path="/GymRulesPage" element={<GymRulesPage/>}></Route>
           <Route path="/CheckSign" element={<CheckSign />}></Route>
           <Route path="/" element={<Home />}></Route>
           <Route path="/Login" element={<Login />}></Route>
@@ -43,6 +46,8 @@ function App() {
           <Route path="/homeTraining" element={<HomeTraining />}></Route>
           <Route path="/Comments" element={<Comments />}></Route>
           <Route path="/TypeMember/:id/:firstName/:lastName/:email/:fhone" element={<TypeMember />}></Route>
+          <Route path="/SuccessPage" element={<SuccessPage />}></Route>
+          <Route path="/:id/:firstName/:lastName/:email/:fhone/:TypeMember" element={<CreditCardForm />}></Route>
         </Routes>
       </>
     </BrowserRouter>
